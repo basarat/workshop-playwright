@@ -2,7 +2,9 @@
   "name": "workshop-playwright",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "postinstall": "npx playwright install"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
