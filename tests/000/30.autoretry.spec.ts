@@ -7,7 +7,7 @@ test.skip("Page demo", async ({ page }) => {
 
   // act
   const input = page.locator("[title=Searchs]"); // 👀 typo
-  await input.fill("playwright"); // 👀 note that the wait (retries) happens here
+  await input.fill("playwright"); // 👀 note that the wait (retries) happens here, notice await
   await input.press("Enter");
 
   // assert
