@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "postinstall": "npx playwright install"
+    "postinstall": "npx playwright install",
+    "test": "npx playwright test --reporter=list --project=chromium",
+    "test:debug": "npm run test -- --debug"
   },
   "keywords": [],
   "author": "",
