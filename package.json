@@ -5,7 +5,8 @@
   "scripts": {
     "postinstall": "npx playwright install",
     "test": "npx playwright test --reporter=list --project=chromium",
-    "test:debug": "npm run test -- --debug"
+    "test:debug": "npm run test -- --debug",
+    "test:ui": "npm run test -- --ui"
   },
   "keywords": [],
   "author": "",
