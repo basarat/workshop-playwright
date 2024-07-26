@@ -29,7 +29,7 @@ test.describe('New Todo', () => {
     const todoPage = new TodoPage(page);
     await todoPage.newTodoInput.fill(' Hello world ');
     await todoPage.newTodoInput.press('Enter');
-    await expect(todoPage.itemLabelByIndex(0)).toHaveText('Hello world');
+    await expect(todoPage.itemLabelByIndex(0)).toHaveText(/^Hello world$/);
   });
 
   // it('Do not create a todo if the result of trim is an empty string', () => {
