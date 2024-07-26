@@ -1,9 +1,8 @@
 import { Router } from 'takeme';
-import { link as takeme_link } from 'takeme';
 import { proxy } from 'valtio';
 
 export const link = (route: string) => {
-  return '/todo/' + takeme_link(route);
+  return '#' + route;
 };
 
 export const routes = {
