@@ -24,4 +24,6 @@ export type SetAllRequest = {
   items: TodoItem[];
 };
 export const SetAllMethod = "put";
-
+export type SetAllResponse = {
+  status: "success";
+};
