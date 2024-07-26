@@ -5,7 +5,7 @@ test.beforeEach(async ({ page, request }) => {
   await new TodoPage(page).clearTodosAndVisit(request);
 });
 
-test.describe('No todos', () => {
+test.describe('No Todos', () => {
   test('The main list and footer should be hidden', async ({ page }) => {
     const todoPage = new TodoPage(page);
     await expect(todoPage.main).not.toBeVisible();

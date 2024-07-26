@@ -1,7 +1,7 @@
 import { Page, APIRequestContext, expect } from '@playwright/test';
 
 const pageUrl = 'http://localhost:3000/todo';
-const apiUrl = 'http://localhost:3000/dodo/api';
+const apiUrl = 'http://localhost:3000/todo/api';
 
 export class TodoPage {
   constructor(private readonly page: Page) {}
