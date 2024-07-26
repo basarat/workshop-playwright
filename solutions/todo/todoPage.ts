@@ -63,7 +63,7 @@ export class TodoPage {
     return this.page.locator(`[data-test=item-label-${index}]`);
   }
   itemDestroyByIndex(index: number) {
-    return this.page.locator(`[data-test=item-destroy-${index}`);
+    return this.page.locator(`[data-test=item-destroy-${index}]`);
   }
 
   itemEditByIndex(index: number) {

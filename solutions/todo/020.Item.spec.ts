@@ -20,9 +20,11 @@ test.describe('Item', () => {
     await todoPage.itemCheckboxByIndex(0).click();
     await expect(todoPage.itemCheckboxByIndex(0)).not.toBeChecked();
   });
-  // it('Clicking the remove button should remove it item', () => {
-  //   todoPage.addTodo('Hello World');
-  //   todoPage.itemDestroyByIndex(0).invoke('show').click();
-  //   cy.contains('Hello World').should('not.exist');
-  // });
+
+  test('Clicking the remove button should remove it item', async ({ page }) => {
+    const todoPage = new TodoPage(page);
+    await todoPage.addTodo('Hello World');
+    await todoPage.itemDestroyByIndex(0).dispatchEvent("click");
+    await expect(todoPage.itemLabelByIndex(0)).not.toBeVisible();
+  });
 });
