@@ -32,8 +32,10 @@ test.describe('New Todo', () => {
     await expect(todoPage.itemLabelByIndex(0)).toHaveText(/^Hello world$/);
   });
 
-  // it('Do not create a todo if the result of trim is an empty string', () => {
-  //   todoPage.newTodoInput.type('  ').type('{enter}');
-  //   todoPage.itemLabelByIndex(0).should('not.exist');
-  // });
+  test('Do not create a todo if the result of trim is an empty string', async ({ page }) => {
+    const todoPage = new TodoPage(page);
+    await todoPage.newTodoInput.fill(' ');
+    await todoPage.newTodoInput.press('Enter');
+    await expect(todoPage.itemLabelByIndex(0)).not.toBeVisible();
+  });
 });
