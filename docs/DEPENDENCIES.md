@@ -31,3 +31,15 @@ For generating ids on the backend
 - "uuid"
 - dev
   - "@types/uuid"
+
+For client side routing
+
+- takeme
+
+For client side state management
+
+- valtio
+
+For client side network requests
+
+- axios
