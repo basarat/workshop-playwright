@@ -25,3 +25,9 @@ For database
 - dev
   - "@types/lowdb"
 - "lowdb"
+
+For generating ids on the backend
+
+- "uuid"
+- dev
+  - "@types/uuid"
