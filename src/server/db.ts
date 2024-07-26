@@ -17,10 +17,8 @@ const adapter = new JSONFile<DBSchema>(file);
 /** The DB */
 const db = new Low(adapter, { items: [] });
 
-type SafeDb = Omit<typeof db, 'data'> & { data: DBSchema };
 
-export async function getDb(): Promise<SafeDb> {
+export async function getDb() {
   await db.read();
-  db.data = db.data ||= { items: [] };
-  return db as SafeDb;
+  return db;
 }
