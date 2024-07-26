@@ -2,8 +2,7 @@ import { test, expect } from '@playwright/test';
 import { TodoPage } from './todoPage';
 
 test.beforeEach(async ({ page, request }) => {
-  const todoPage = new TodoPage(page);
-  await todoPage.clearTodosAndVisit(request);
+  await new TodoPage(page).clearTodosAndVisit(request);
 });
 
 test.describe('No todos', () => {
