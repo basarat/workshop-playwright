@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { SetAllRequest, SetAllResponse } from "../../../common/types";
-import { getDb } from "../../../server/db";
+import { SetAllRequest, SetAllResponse } from "../../../../common/types";
+import { getDb } from "../../../../server/db";
 
 export default async function PUT(req: NextRequest) {
   const body: SetAllRequest = await req.json();

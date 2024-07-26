@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { AddRequest, AddResponse } from "../../../common/types";
-import { getDb } from "../../../server/db";
+import { AddRequest, AddResponse } from "../../../../common/types";
+import { getDb } from "../../../../server/db";
 import { v4 as uuid } from "uuid";
 
 export default async function POST(req: NextRequest) {

@@ -1,0 +1,20 @@
+@api=http://localhost:3000/todo/api
+
+###
+GET {{api}}/get-all HTTP/1.1
+
+###
+POST {{api}}/add HTTP/1.1
+Content-Type: application/json
+
+{
+  "message": "Buy Milk"
+}
+
+###
+PUT {{api}}/set-all HTTP/1.1
+Content-Type: application/json
+
+{
+  "items": []
+}
