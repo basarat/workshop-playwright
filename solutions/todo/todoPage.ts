@@ -56,7 +56,7 @@ export class TodoPage {
   }
 
   itemCheckboxByIndex(index: number) {
-    return this.page.locator(`[data-test=item-toggle-${index}`);
+    return this.page.locator(`[data-test=item-toggle-${index}]`);
   }
 
   itemLabelByIndex(index: number) {
