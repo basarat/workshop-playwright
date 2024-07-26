@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "lint": "next lint",
     "postinstall": "npx playwright install",
     "test": "npx playwright test --reporter=list --project=chromium",
     "test:debug": "npm run test -- --debug",
@@ -11,8 +14,20 @@
   "keywords": [],
   "author": "",
   "description": "",
+  "dependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "next": "14.2.5",
+    "lowdb": "3.0.0"
+  },
   "devDependencies": {
-    "@playwright/test": "^1.45.3",
-    "@types/node": "^20.14.12"
+    "@types/lowdb": "1.0.11",
+    "typescript": "5.5.4",
+    "@playwright/test": "1.45.3",
+    "@types/node": "20.14.12",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "eslint": "8.57.0",
+    "eslint-config-next": "14.2.5"
   }
 }
