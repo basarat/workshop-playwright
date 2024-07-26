@@ -22,8 +22,6 @@ For nextjs + playwright
 
 For database
 
-- dev
-  - "@types/lowdb"
 - "lowdb"
 
 For generating ids on the backend

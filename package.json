@@ -19,13 +19,12 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "next": "14.2.5",
-    "lowdb": "3.0.0",
+    "lowdb": "7.0.1",
     "uuid": "9.0.0",
     "valtio": "1.13.2",
     "takeme": "0.12.0"
   },
   "devDependencies": {
-    "@types/lowdb": "1.0.11",
     "typescript": "5.5.4",
     "@playwright/test": "1.45.3",
     "@types/node": "20.14.12",

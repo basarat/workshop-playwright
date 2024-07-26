@@ -1,6 +1,7 @@
-import { Low, JSONFile } from "lowdb";
-import path from "path";
-import { TodoItem } from "../common/types";
+import { Low } from 'lowdb';
+import { JSONFile } from 'lowdb/node';
+import path from 'path';
+import { TodoItem } from '../common/types';
 
 /**
  * Schema
@@ -10,13 +11,13 @@ type DBSchema = {
 };
 
 /** Use JSON file for storage */
-const file = path.join(__dirname, "../../db.json");
+const file = path.join(__dirname, '../../db.json');
 const adapter = new JSONFile<DBSchema>(file);
 
 /** The DB */
-const db = new Low(adapter);
+const db = new Low(adapter, { items: [] });
 
-type SafeDb = Omit<typeof db, "data"> & { data: DBSchema };
+type SafeDb = Omit<typeof db, 'data'> & { data: DBSchema };
 
 export async function getDb(): Promise<SafeDb> {
   await db.read();
