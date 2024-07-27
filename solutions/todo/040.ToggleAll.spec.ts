@@ -30,20 +30,21 @@ test.describe('Toggle All', () => {
     await todoPage.itemCheckboxByIndex(1).click();
     await expect(todoPage.toggleAllCheckbox).toBeChecked();
   });
-  // it('This checkbox toggles all the todos to the same state as itself', () => {
-  //   todoPage.addTodo('Hello');
-  //   todoPage.addTodo('World');
+  test('This checkbox toggles all the todos to the same state as itself', async ({ page }) => {
+    const todoPage = new TodoPage(page);
+    await todoPage.addTodo('Hello');
+    await todoPage.addTodo('World');
 
-  //   /** When clicked, If it is not checked, it checks all todos. */
-  //   todoPage.toggleAllCheckbox.click();
-  //   todoPage.itemCheckboxByIndex(0).should('be.checked');
-  //   todoPage.itemCheckboxByIndex(1).should('be.checked');
-  //   todoPage.toggleAllCheckbox.should('be.checked');
+    /** When clicked, If it is not checked, it checks all todos. */
+    await todoPage.toggleAllCheckbox.click();
+    await expect(todoPage.itemCheckboxByIndex(0)).toBeChecked();
+    await expect(todoPage.itemCheckboxByIndex(1)).toBeChecked();
+    await expect(todoPage.toggleAllCheckbox).toBeChecked();
 
-  //   /** When clicked, If it is checked, it unchecks all todos. */
-  //   todoPage.toggleAllCheckbox.click();
-  //   todoPage.itemCheckboxByIndex(0).should('not.be.checked');
-  //   todoPage.itemCheckboxByIndex(1).should('not.be.checked');
-  //   todoPage.toggleAllCheckbox.should('not.be.checked');
-  // });
+    /** When clicked, If it is checked, it unchecks all todos. */
+    await todoPage.toggleAllCheckbox.click();
+    await expect(todoPage.itemCheckboxByIndex(0)).not.toBeChecked();
+    await expect(todoPage.itemCheckboxByIndex(1)).not.toBeChecked();
+    await expect(todoPage.toggleAllCheckbox).not.toBeChecked();
+  });
 });
