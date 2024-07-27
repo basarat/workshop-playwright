@@ -12,15 +12,16 @@ test.describe('Toggle All', () => {
     await todoPage.addTodo('Hello');
     await expect(todoPage.toggleAllCheckbox).toBeAttached();
   });
-  // it('If any todo is not complete it should not be checked.', () => {
-  //   todoPage.addTodo('Hello');
-  //   todoPage.addTodo('World');
-  //   /** When nothing is checked */
-  //   todoPage.toggleAllCheckbox.should('not.be.checked');
-  //   /** When mixed */
-  //   todoPage.itemCheckboxByIndex(0).click();
-  //   todoPage.toggleAllCheckbox.should('not.be.checked');
-  // });
+  test('If any todo is not complete it should not be checked.', async ({ page }) => {
+    const todoPage = new TodoPage(page);
+    await todoPage.addTodo('Hello');
+    await todoPage.addTodo('World');
+    /** When nothing is checked */
+    await expect(todoPage.toggleAllCheckbox).not.toBeChecked();
+    /** When mixed */
+    await todoPage.itemCheckboxByIndex(0).click();
+    await expect(todoPage.toggleAllCheckbox).not.toBeChecked();
+  });
   // it('When all the todos are checked it should also get checked.', () => {
   //   todoPage.addTodo('Hello');
   //   todoPage.addTodo('World');
