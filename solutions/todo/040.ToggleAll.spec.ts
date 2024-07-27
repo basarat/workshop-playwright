@@ -22,13 +22,14 @@ test.describe('Toggle All', () => {
     await todoPage.itemCheckboxByIndex(0).click();
     await expect(todoPage.toggleAllCheckbox).not.toBeChecked();
   });
-  // it('When all the todos are checked it should also get checked.', () => {
-  //   todoPage.addTodo('Hello');
-  //   todoPage.addTodo('World');
-  //   todoPage.itemCheckboxByIndex(0).click();
-  //   todoPage.itemCheckboxByIndex(1).click();
-  //   todoPage.toggleAllCheckbox.should('be.checked');
-  // });
+  test('When all the todos are checked it should also get checked.', async ({ page }) => {
+    const todoPage = new TodoPage(page);
+    await todoPage.addTodo('Hello');
+    await todoPage.addTodo('World');
+    await todoPage.itemCheckboxByIndex(0).click();
+    await todoPage.itemCheckboxByIndex(1).click();
+    await expect(todoPage.toggleAllCheckbox).toBeChecked();
+  });
   // it('This checkbox toggles all the todos to the same state as itself', () => {
   //   todoPage.addTodo('Hello');
   //   todoPage.addTodo('World');
