@@ -30,18 +30,20 @@ test.describe('Edit item', () => {
     await todoPage.itemEditByIndex(0).press('Escape');
     await expect(todoPage.itemEditByIndex(0)).not.toBeAttached();
   });
-  // it('Enter results in a commit', async ({ page }) => {
-  //   const todoPage = new TodoPage(page);
-  //   todoPage.itemLabelByIndex(0).dblclick();
-  //   todoPage.itemEditByIndex(0).type(' World{enter}');
-  //   todoPage.itemLabelByIndex(0).should('have.text', 'Hello World');
-  // });
-  // it('Blur results in a commit', async ({ page }) => {
-  //   const todoPage = new TodoPage(page);
-  //   todoPage.itemLabelByIndex(0).dblclick();
-  //   todoPage.itemEditByIndex(0).type(' World').blur();
-  //   todoPage.itemLabelByIndex(0).should('have.text', 'Hello World');
-  // });
+  test('Enter results in a commit', async ({ page }) => {
+    const todoPage = new TodoPage(page);
+    await todoPage.itemLabelByIndex(0).dblclick();
+    await todoPage.itemEditByIndex(0).pressSequentially(' World');
+    await todoPage.itemEditByIndex(0).press('Enter');
+    await expect(todoPage.itemLabelByIndex(0)).toHaveText('Hello World');
+  });
+  test('Blur results in a commit', async ({ page }) => {
+    const todoPage = new TodoPage(page);
+    await todoPage.itemLabelByIndex(0).dblclick();
+    await todoPage.itemEditByIndex(0).pressSequentially(' World');
+    await todoPage.itemEditByIndex(0).blur();
+    await expect(todoPage.itemLabelByIndex(0)).toHaveText('Hello World');
+  });
   // it('The *commit* is done after trim', async ({ page }) => {
   //   const todoPage = new TodoPage(page);
   //   todoPage.itemLabelByIndex(0).dblclick();
