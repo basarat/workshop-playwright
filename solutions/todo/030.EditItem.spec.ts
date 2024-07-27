@@ -44,12 +44,13 @@ test.describe('Edit item', () => {
     await todoPage.itemEditByIndex(0).blur();
     await expect(todoPage.itemLabelByIndex(0)).toHaveText('Hello World');
   });
-  // it('The *commit* is done after trim', async ({ page }) => {
-  //   const todoPage = new TodoPage(page);
-  //   todoPage.itemLabelByIndex(0).dblclick();
-  //   todoPage.itemEditByIndex(0).type(' World ').blur();
-  //   todoPage.itemLabelByIndex(0).should('have.text', 'Hello World');
-  // });
+  test('The *commit* is done after trim', async ({ page }) => {
+    const todoPage = new TodoPage(page);
+    await todoPage.itemLabelByIndex(0).dblclick();
+    await todoPage.itemEditByIndex(0).pressSequentially(' World   ');
+    await todoPage.itemEditByIndex(0).blur();
+    await expect(todoPage.itemLabelByIndex(0)).toHaveText(/^Hello World$/);
+  });
   // it('If the trim results in an empty value, the commit should destroy the item', async ({ page }) => {
   //   const todoPage = new TodoPage(page);
   //   todoPage.itemLabelByIndex(0).dblclick();
