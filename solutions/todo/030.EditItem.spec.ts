@@ -15,17 +15,21 @@ test.describe('Edit item', () => {
     await todoPage.itemLabelByIndex(0).dblclick();
     await expect(todoPage.itemEditByIndex(0)).toBeAttached();
   });
-  // it('The edit mode should exit on enter, blur and escape', async ({ page }) => {
-  //   const todoPage = new TodoPage(page);
-  //   todoPage.itemLabelByIndex(0).dblclick();
-  //   todoPage.itemEditByIndex(0).type('{enter}').should('not.exist');
+  test('The edit mode should exit on enter, blur and escape', async ({ page }) => {
+    const todoPage = new TodoPage(page);
 
-  //   todoPage.itemLabelByIndex(0).dblclick();
-  //   todoPage.itemEditByIndex(0).blur().should('not.exist');
+    await todoPage.itemLabelByIndex(0).dblclick();
+    await todoPage.itemEditByIndex(0).press('Enter');
+    await expect(todoPage.itemEditByIndex(0)).not.toBeAttached();
 
-  //   todoPage.itemLabelByIndex(0).dblclick();
-  //   todoPage.itemEditByIndex(0).type('{esc}').should('not.exist');
-  // });
+    await todoPage.itemLabelByIndex(0).dblclick();
+    await todoPage.itemEditByIndex(0).blur();
+    await expect(todoPage.itemEditByIndex(0)).not.toBeAttached();
+
+    await todoPage.itemLabelByIndex(0).dblclick();
+    await todoPage.itemEditByIndex(0).press('Escape');
+    await expect(todoPage.itemEditByIndex(0)).not.toBeAttached();
+  });
   // it('Enter results in a commit', async ({ page }) => {
   //   const todoPage = new TodoPage(page);
   //   todoPage.itemLabelByIndex(0).dblclick();
