@@ -78,8 +78,8 @@ export class TodoPage {
 
   async addTodo(text: string) {
     await this.newTodoInput.fill(text);
-    await this.newTodoInput.press('Enter');
-    await this.page.waitForResponse(/add/);
+    this.newTodoInput.press('Enter'); // don't wait for enter
+    await this.page.waitForResponse(/add/); // ^ because we wait for the response
     await expect(this.newTodoInput).toHaveValue('');
   }
 
