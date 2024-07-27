@@ -1,7 +1,7 @@
-# No todos
+# No Todos
 - When there are no todos, the main list and the footer should be hidden.
 
-# New todo
+# New Todo
 - The input element should be focused when the page is loaded. 
 - New todos are entered in the input at the top of the app. 
 - Pressing Enter creates the todo, appends it to the todo list, and clears the input. 
@@ -12,7 +12,7 @@
 - Clicking the checkbox toggles the todo active/complete
 - Clicking the remove button should remove it item
 
-# Edit item
+# Edit Item
 - Double-clicking the todo label activates editing mode
 - The edit mode should exit on enter, blur and escape
 - Enter results in a commit
@@ -21,7 +21,7 @@
 - If the trim results in an empty value, the commit should destroy the item
 - Escape does not result in a commit
 
-# Toggle all
+# Toggle All
 - Should not be visible when there are no todos.
 - If any todo is not complete it should not be checked.
 - When all the todos are checked it should also get checked.
@@ -34,7 +34,7 @@ This checkbox toggles all the todos to the same state as itself.
 - Is not displayed when there are no items
 - Displays the number of active todos in a pluralized form e.g. "0 items left", "1 item left", "2 items left"
 
-# Clear completed button
+# Clear Completed
 - Should be hidden when there are no completed todos
 - Should be visible when there are completed todos
 - Clicking it removes completed todos 
