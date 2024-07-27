@@ -51,16 +51,18 @@ test.describe('Edit item', () => {
     await todoPage.itemEditByIndex(0).blur();
     await expect(todoPage.itemLabelByIndex(0)).toHaveText(/^Hello World$/);
   });
-  // it('If the trim results in an empty value, the commit should destroy the item', async ({ page }) => {
-  //   const todoPage = new TodoPage(page);
-  //   todoPage.itemLabelByIndex(0).dblclick();
-  //   todoPage.itemEditByIndex(0).clear().blur();
-  //   todoPage.itemLabelByIndex(0).should('not.exist');
-  // });
-  // it('Escape does not result in a commit', async ({ page }) => {
-  //   const todoPage = new TodoPage(page);
-  //   todoPage.itemLabelByIndex(0).dblclick();
-  //   todoPage.itemEditByIndex(0).type(' World{esc}');
-  //   todoPage.itemLabelByIndex(0).should('have.text', 'Hello');
-  // });
+  test('If the trim results in an empty value, the commit should destroy the item', async ({ page }) => {
+    const todoPage = new TodoPage(page);
+    await todoPage.itemLabelByIndex(0).dblclick();
+    await todoPage.itemEditByIndex(0).clear();
+    await todoPage.itemEditByIndex(0).blur();
+    await expect(todoPage.itemEditByIndex(0)).not.toBeAttached();
+  });
+  test('Escape does not result in a commit', async ({ page }) => {
+    const todoPage = new TodoPage(page);
+    await todoPage.itemLabelByIndex(0).dblclick();
+    await todoPage.itemEditByIndex(0).pressSequentially(' World');
+    await todoPage.itemEditByIndex(0).press('Escape');
+    await expect(todoPage.itemLabelByIndex(0)).toHaveText(/^Hello$/);
+  });
 });
