@@ -20,11 +20,12 @@ test.describe('Routing', () => {
     await todoPage.expectTodos(['Completed', 'Active']);
     await expect(todoPage.routeAll).toHaveClass(todoPage.classNames.selectedRoute);
   });
-  // it('"#/active" - Only active items are shown. The active link is selected', () => {
-  //   cy.visit('#/active');
-  //   todoPage.allTodos.should('deep.equal', ['Active']);
-  //   todoPage.routeActive.should('have.class', todoPage.classNames.selectedRoute);
-  // });
+  test('"#/active" - Only active items are shown. The active link is selected', async ({ page }) => {
+    const todoPage = new TodoPage(page);
+    await page.goto(page.url() + '#/active');
+    await todoPage.expectTodos(['Active']);
+    await expect(todoPage.routeActive).toHaveClass(todoPage.classNames.selectedRoute);
+  });
   // it('"#/completed" - Only completed items are shown. The completed link is selected', () => {
   //   cy.visit('#/completed');
   //   todoPage.allTodos.should('deep.equal', ['Completed']);
