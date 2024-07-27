@@ -56,6 +56,11 @@ export class TodoPage {
     return this.page.locator('[data-test=completed]');
   }
 
+  async goto(route: 'all' | 'active' | 'completed') {
+    const hash = route === 'all' ? '' : `#/${route}`;
+    return this.page.goto(this.page.url() + hash);
+  }
+
   itemCheckboxByIndex(index: number) {
     return this.page.locator(`[data-test=item-toggle-${index}]`);
   }
@@ -81,7 +86,7 @@ export class TodoPage {
   classNames = {
     newTodoInput: todomvcClassNames.newTodo,
     selectedRoute: todomvcClassNames.selected,
-  }
+  };
 
   async expectTodos(todos: string[]) {
     await expect(this.page.locator('.todo-list label')).toHaveText(todos);

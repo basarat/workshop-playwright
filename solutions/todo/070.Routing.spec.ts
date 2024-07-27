@@ -22,23 +22,28 @@ test.describe('Routing', () => {
   });
   test('"#/active" - Only active items are shown. The active link is selected', async ({ page }) => {
     const todoPage = new TodoPage(page);
-    await page.goto(page.url() + '#/active');
+    await todoPage.goto('active');
     await todoPage.expectTodos(['Active']);
     await expect(todoPage.routeActive).toHaveClass(todoPage.classNames.selectedRoute);
   });
-  // it('"#/completed" - Only completed items are shown. The completed link is selected', () => {
-  //   cy.visit('#/completed');
-  //   todoPage.allTodos.should('deep.equal', ['Completed']);
-  //   todoPage.routeCompleted.should('have.class', todoPage.classNames.selectedRoute);
-  // });
-  // it('"#/active" - Items should move out if checked', () => {
-  //   cy.visit('#/active');
-  //   todoPage.itemCheckboxByIndex(0).click();
-  //   todoPage.itemLabelByIndex(0).should('not.exist');
-  // });
-  // it('"#/completed" - Items should move out if unchecked', () => {
-  //   cy.visit('#/completed');
-  //   todoPage.itemCheckboxByIndex(0).click();
-  //   todoPage.itemLabelByIndex(0).should('not.exist');
-  // });
+  test('"#/completed" - Only completed items are shown. The completed link is selected', async ({ page }) => {
+    const todoPage = new TodoPage(page);
+    await todoPage.goto('completed');
+    await todoPage.expectTodos(['Completed']);
+    await expect(todoPage.routeCompleted).toHaveClass(todoPage.classNames.selectedRoute);
+  });
+  test('"#/active" - Items should move out if checked', async ({ page }) => {
+    const todoPage = new TodoPage(page);
+    await todoPage.goto('active');
+    await todoPage.itemCheckboxByIndex(0).click();
+    await expect(todoPage.itemLabelByIndex(0)).not.toBeAttached();
+    await todoPage.expectTodos([]);
+  });
+  test('"#/completed" - Items should move out if unchecked', async ({ page }) => {
+    const todoPage = new TodoPage(page);
+    await todoPage.goto('completed');
+    await todoPage.itemCheckboxByIndex(0).click();
+    await expect(todoPage.itemLabelByIndex(0)).not.toBeAttached();
+    await todoPage.expectTodos([]);
+  });
 });
