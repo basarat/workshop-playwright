@@ -1,4 +1,5 @@
 import { Page, APIRequestContext, expect } from '@playwright/test';
+import { todomvcClassNames } from '../../src/app/todo/todomvc.styles';
 
 const pageUrl = 'http://localhost:3000/todo';
 const apiUrl = 'http://localhost:3000/todo/api';
@@ -75,6 +76,11 @@ export class TodoPage {
     await this.newTodoInput.press('Enter');
     await this.page.waitForResponse(/add/);
     await expect(this.newTodoInput).toHaveValue('');
+  }
+
+  classNames = {
+    newTodoInput: todomvcClassNames.newTodo,
+    selectedRoute: todomvcClassNames.selected,
   }
 
   async expectTodos(todos: string[]) {

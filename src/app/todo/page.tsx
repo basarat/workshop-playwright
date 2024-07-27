@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { classNames } from './todomvc.styles';
+import { todomvcClassNames } from './todomvc.styles';
 import { useAppSnapshot } from './state/appState';
 import { routes, link } from './state/routerState';
 
@@ -15,7 +15,7 @@ const Home = () => {
 
   return (
     <>
-      <section className={classNames.app}>
+      <section className={todomvcClassNames.app}>
         <Header />
         {appSnap.hasTodos && <Main />}
         {appSnap.hasTodos && <Footer />}
@@ -37,10 +37,10 @@ const Header: React.FC<{}> = () => {
   }, []);
 
   return (
-    <header className={classNames.header}>
+    <header className={todomvcClassNames.header}>
       <h1>todos</h1>
       <input
-        className={classNames.newTodo}
+        className={todomvcClassNames.newTodo}
         autoFocus={true} /** autoFocus not working 🤷🏻‍♂️ */
         ref={inputRef}
         placeholder="What needs to be done?"
@@ -60,28 +60,28 @@ const Main: React.FC<{}> = () => {
   const appState = useAppSnapshot();
 
   return (
-    <section className={classNames.main}>
+    <section className={todomvcClassNames.main}>
       <input
-        id={classNames.toggleAll}
-        className={classNames.toggleAll}
+        id={todomvcClassNames.toggleAll}
+        className={todomvcClassNames.toggleAll}
         type="checkbox"
         checked={appState.everythingIsCompleted}
         onChange={() => appState.toggleCompleteEverything()}
       />
-      <label htmlFor={classNames.toggleAll}>Mark all as complete</label>
-      <ul className={classNames.todoList}>
+      <label htmlFor={todomvcClassNames.toggleAll}>Mark all as complete</label>
+      <ul className={todomvcClassNames.todoList}>
         {appState.visibleList.map((item, i) => {
           return (
             <li
               key={item.id}
               className={
-                item.id === appState.editingId ? classNames.editing : item.completed ? classNames.completed : ''
+                item.id === appState.editingId ? todomvcClassNames.editing : item.completed ? todomvcClassNames.completed : ''
               }
             >
-              <div className={classNames.view}>
+              <div className={todomvcClassNames.view}>
                 <input
                   data-test={`item-toggle-${i}`}
-                  className={classNames.toggle}
+                  className={todomvcClassNames.toggle}
                   type="checkbox"
                   checked={item.completed}
                   onChange={() => appState.toggle(item.id)}
@@ -90,7 +90,7 @@ const Main: React.FC<{}> = () => {
                   {item.message}
                 </label>
                 <button
-                  className={classNames.destroy}
+                  className={todomvcClassNames.destroy}
                   data-test={`item-destroy-${i}`}
                   onClick={() => appState.destroy(item.id)}
                 />
@@ -98,7 +98,7 @@ const Main: React.FC<{}> = () => {
               {appState.editingId && (
                 <input
                   data-test={`item-edit-${i}`}
-                  className={classNames.edit}
+                  className={todomvcClassNames.edit}
                   value={appState.editingTodoMessage}
                   onChange={(e) => appState.setEditingTodoMessage(e.target.value)}
                   onKeyDown={(e) => {
@@ -124,25 +124,25 @@ const Footer: React.FC<{}> = () => {
   const appSnap = useAppSnapshot();
   const routerSnap = appSnap.router;
   return (
-    <footer className={classNames.footer}>
-      <span className={classNames.todoCount}>
+    <footer className={todomvcClassNames.footer}>
+      <span className={todomvcClassNames.todoCount}>
         <strong>{appSnap.activeCount}</strong> {appSnap.activeCount === 1 ? 'item' : 'items'} left
       </span>
-      <ul className={classNames.filters}>
+      <ul className={todomvcClassNames.filters}>
         <li>
-          <a data-test="all" className={routerSnap.route === 'all' ? classNames.selected : ''} href={link(routes.all)}>
+          <a data-test="all" className={routerSnap.route === 'all' ? todomvcClassNames.selected : ''} href={link(routes.all)}>
             All
           </a>
           <a
             data-test="active"
-            className={routerSnap.route === 'active' ? classNames.selected : ''}
+            className={routerSnap.route === 'active' ? todomvcClassNames.selected : ''}
             href={link(routes.active)}
           >
             Active
           </a>
           <a
             data-test="completed"
-            className={routerSnap.route === 'completed' ? classNames.selected : ''}
+            className={routerSnap.route === 'completed' ? todomvcClassNames.selected : ''}
             href={link(routes.completed)}
           >
             Completed
@@ -150,7 +150,7 @@ const Footer: React.FC<{}> = () => {
         </li>
       </ul>
       {appSnap.completedCount > 0 && (
-        <button className={classNames.clearCompleted} onClick={() => appSnap.clearCompleted()}>
+        <button className={todomvcClassNames.clearCompleted} onClick={() => appSnap.clearCompleted()}>
           Clear completed
         </button>
       )}
@@ -160,7 +160,7 @@ const Footer: React.FC<{}> = () => {
 
 const Info = () => {
   return (
-    <footer className={classNames.info}>
+    <footer className={todomvcClassNames.info}>
       <p>Double-click to edit a todo</p>
       <p>
         Created by <a href="http://basarat.com">@basarat</a>
