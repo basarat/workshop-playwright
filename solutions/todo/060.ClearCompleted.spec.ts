@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { TodoPage } from './todoPage';
+import { TodoPage } from '../../tests/todo/todoPage';
 
 test.beforeEach(async ({ page, request }) => {
   await new TodoPage(page).clearTodosAndVisit(request);
