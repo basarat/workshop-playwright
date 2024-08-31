@@ -1,19 +1,16 @@
 import { test, expect } from '../../tests/todo/test';
-import { TodoPage } from '../../tests/todo/todoPage';
 
 test.beforeEach(async ({ clearTodosAndVisit }) => {
   await clearTodosAndVisit();
 });
 
 test.describe('Counter', () => {
-  test('Is not displayed when there are no items', async ({ page }) => {
-    const todoPage = new TodoPage(page);
+  test('Is not displayed when there are no items', async ({ todoPage }) => {
     await expect(todoPage.todoCount).not.toBeAttached();
   });
   test('Displays the number of active todos in a pluralized form e.g. "0 items left", "1 item left", "2 items left"', async ({
-    page,
+    todoPage,
   }) => {
-    const todoPage = new TodoPage(page);
     await todoPage.addTodo('Hello World');
     await todoPage.addTodo('Again');
 
