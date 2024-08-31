@@ -1,13 +1,7 @@
-import { test, expect } from '@playwright/test';
-import { TodoPage } from '../../tests/todo/todoPage';
-
-test.beforeEach(async ({ page, request }) => {
-  await new TodoPage(page).clearTodosAndVisit(request);
-});
+import { test, expect } from '../../tests/todo/test';
 
 test.describe('No Todos', () => {
-  test('The main list and footer should be hidden', async ({ page }) => {
-    const todoPage = new TodoPage(page);
+  test('The main list and footer should be hidden', async ({ todoPage }) => {
     await expect(todoPage.main).not.toBeVisible();
     await expect(todoPage.footer).not.toBeVisible();
   });
