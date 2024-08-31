@@ -10,7 +10,7 @@ test.describe('Edit item', () => {
   });
   test('Double-clicking the todo label activates editing mode', async ({ todoPage }) => {
     await todoPage.itemLabelByIndex(0).dblclick();
-    await expect(todoPage.itemEditByIndex(0)).toBeAttached();
+    await expect(todoPage.itemEditByIndex(0)).toBeVisible();
   });
   test('The edit mode should exit on enter, blur and escape', async ({ todoPage }) => {
     await todoPage.itemLabelByIndex(0).dblclick();
