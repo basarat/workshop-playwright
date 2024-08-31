@@ -2,6 +2,9 @@
 
 ```sh
 git clone
+```
+
+```sh
 npm i
 ```
 
