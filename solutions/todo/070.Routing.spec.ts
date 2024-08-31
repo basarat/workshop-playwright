@@ -1,14 +1,12 @@
 import { test, expect } from '../../tests/todo/test';
 import { TodoPage } from '../../tests/todo/todoPage';
 
-test.beforeEach(async ({ page, request }) => {
-  await new TodoPage(page).clearTodosAndVisit(request);
+test.beforeEach(async ({ clearTodosAndVisit }) => {
+  await clearTodosAndVisit();
 });
 
 test.describe('Routing', () => {
-  test.beforeEach(async ({ page }) => {
-    const todoPage = new TodoPage(page);
-
+  test.beforeEach(async ({ todoPage }) => {
     await todoPage.addTodo('Completed');
     await todoPage.itemCheckboxByIndex(0).click();
 

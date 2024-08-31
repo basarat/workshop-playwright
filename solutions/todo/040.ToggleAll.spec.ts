@@ -1,8 +1,8 @@
 import { test, expect } from '../../tests/todo/test';
 import { TodoPage } from '../../tests/todo/todoPage';
 
-test.beforeEach(async ({ page, request }) => {
-  await new TodoPage(page).clearTodosAndVisit(request);
+test.beforeEach(async ({ clearTodosAndVisit }) => {
+  await clearTodosAndVisit();
 });
 
 test.describe('Toggle All', () => {
