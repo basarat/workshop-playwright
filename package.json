@@ -9,7 +9,7 @@
     "postinstall": "npx playwright install",
     "test": "npx playwright test --reporter=list --project=chromium",
     "test:debug": "npm run test -- --debug",
-    "test:ui": "npm run test -- --ui"
+    "test:ui": "npx playwright test --ui"
   },
   "keywords": [],
   "author": "",
