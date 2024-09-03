@@ -6,6 +6,8 @@ import {
   AddRequest,
   AddResponse,
   GetAllResponse,
+  UpdateRequest,
+  UpdateResponse,
 } from '../../src/common/types';
 
 const api = `http://localhost:${port}/todo/api`;
@@ -31,5 +33,13 @@ export async function add(request: APIRequestContext, data: AddRequest) {
   return {
     response,
     json: (await response.json()) as AddResponse,
+  };
+}
+
+export async function update(request: APIRequestContext, data: UpdateRequest) {
+  const response = await request.post(`${api}/update`, { data });
+  return {
+    response,
+    json: (await response.json()) as UpdateResponse,
   };
 }
