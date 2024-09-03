@@ -27,3 +27,16 @@ export const SetAllMethod = "put";
 export type SetAllResponse = {
   status: "success";
 };
+
+export const updateEndpoint = '/update';
+export type UpdateRequest = {
+  id: string,
+  completed: boolean,
+}
+export type UpdateResponse = {
+  status: 'success',
+} | {
+  status: 'error',
+  reason: 'Item not found'
+};
+export const UpdateMethod = 'post';
