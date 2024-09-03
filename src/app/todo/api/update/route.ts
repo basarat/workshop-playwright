@@ -20,7 +20,8 @@ export async function POST(req: NextRequest) {
     if (x.id === body.id) {
       return {
         ...x,
-        completed: body.completed
+        completed: body.completed,
+        message: body.message,
       }
     } else {
       return x;
@@ -31,6 +32,7 @@ export async function POST(req: NextRequest) {
 
   const response: UpdateResponse = {
     status: 'success',
+    item: body,
   };
   return NextResponse.json(response);
 }

@@ -29,12 +29,10 @@ export type SetAllResponse = {
 };
 
 export const updateEndpoint = '/update';
-export type UpdateRequest = {
-  id: string,
-  completed: boolean,
-}
+export type UpdateRequest = TodoItem;
 export type UpdateResponse = {
   status: 'success',
+  item: TodoItem,
 } | {
   status: 'error',
   reason: 'Item not found'

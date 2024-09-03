@@ -16,7 +16,8 @@ POST {{api}}/update HTTP/1.1
 Content-Type: application/json
 
 {
-  "id": "4b105ed7-bab6-459a-9fed-82bd67ca385d",
+  "id": "bba2a747-0525-4960-9d58-3c92da4def20",
+  "message": "Buy More Milk",
   "completed": true
 }
 
