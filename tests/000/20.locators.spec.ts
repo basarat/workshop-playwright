@@ -1,14 +1,17 @@
 import { test, expect } from "@playwright/test";
 
+/**
+ * Note: using bing as google is blocked with "are you a robot"
+ */
 test("Page demo", async ({ page }) => {
   // arrange
-  await page.goto("https://google.com");
+  await page.goto("https://bing.com");
 
   // act
-  const input = page.locator("[title=Search]");
+  const input = page.locator("[type=Search]");
   await input.fill("playwright");
   await input.press("Enter");
 
   // assert
-  await expect(page).toHaveTitle("playwright - Google Search");
+  await expect(page).toHaveTitle(/Search/);
 });
